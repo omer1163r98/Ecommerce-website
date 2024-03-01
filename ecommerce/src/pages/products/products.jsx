@@ -3,8 +3,9 @@ import { useState } from 'react'
 import './products.css';
 import { NavLink } from 'react-router-dom'
 import Details from './details';
-const Products = ({input, setInput, cartArr}) => {
+const Products = ({input, setInput, cartArr, total, setTotal}) => {
     const [data, setData] = useState([])
+    
 
     useEffect(() => {
         async function products() {
@@ -24,10 +25,10 @@ const Products = ({input, setInput, cartArr}) => {
 
     }, [])
 
-    function AddRemoveCart (itemID) {
+    function AddRemoveCart (itemID, itemPrice) {
         const index = cartArr.indexOf(itemID);
         (cartArr.includes(itemID)) ? cartArr.splice(index, 1) : 
-        cartArr.push(itemID)
+        cartArr.push(itemID) && setTotal(total + itemPrice )
     }
 
     if (data.length === 0){
@@ -47,7 +48,7 @@ const Products = ({input, setInput, cartArr}) => {
                         <h4 className='title' key={index} >{item.title}</h4>
                         <p className='price'>${item.price}</p>
                         <div className='btns'>
-                            <NavLink to={'/cart'}><button onClick = {() => AddRemoveCart(item.id)}>
+                            <NavLink to={'/cart'}><button onClick = {() => AddRemoveCart(item.id, item.price)}>
                             {(cartArr.includes(item.id)) ? 'Remove from cart' : 'Add to cart'}
 
                                 </button>
