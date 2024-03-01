@@ -1,0 +1,27 @@
+.nav-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 100px;
+    margin: auto
+}
+.nav-links{
+    display: flex;
+    column-gap: 20px;
+    text-decoration: none;
+}
+
+.nav-item{
+    text-decoration:dotted;
+    color:rgb(28, 64, 118)
+
+}
+.search{
+    width: 200px;
+    height: 15px;
+    border: 2px solid black;
+    outline:none;
+    padding: 10px;
+}

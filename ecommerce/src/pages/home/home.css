@@ -1,0 +1,16 @@
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.home button{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    text-decoration: none;
+}
+.shop-now{
+    text-decoration: none;
+    color: black;
+}
