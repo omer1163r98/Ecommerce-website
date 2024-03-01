@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
 
-const Details = ({ cartArr, setCartArr, total, setTotal }) => {
+const Details = ({ cartArr, setCartArr, total, setTotal, setQuantity, quantity }) => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
 
@@ -34,7 +34,7 @@ const Details = ({ cartArr, setCartArr, total, setTotal }) => {
     function AddRemoveCart(itemID, itemPrice) {
         const index = cartArr.indexOf(itemID);
         (cartArr.includes(itemID)) ? cartArr.splice(index, 1) :
-            cartArr.push(itemID) && setTotal(total + itemPrice)
+            cartArr.push(itemID) && setTotal(total + (itemPrice * quantity))
     }
 
     return (

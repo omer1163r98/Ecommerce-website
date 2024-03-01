@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Products from '../products/products'
 import './cart.css'
-const Cart = ({cartArr, setCartArr, total, setTotal}) => {
+const Cart = ({cartArr, setCartArr, total, setTotal, quantity, setQuantity}) => {
     const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
@@ -25,8 +25,9 @@ const Cart = ({cartArr, setCartArr, total, setTotal}) => {
             const updatedCartArr = [...cartArr];
            
             updatedCartArr.splice(index, 1);
-            setTotal(total - itemPrice)
+            setTotal(total - (itemPrice * quantity))
             setCartArr(updatedCartArr);
+
         }
     }
 
@@ -39,6 +40,12 @@ const Cart = ({cartArr, setCartArr, total, setTotal}) => {
                 <img className='img' src={item.image} alt={item.title} />
                 <h3>{item.title}</h3>
                 <p>${item.price}</p>
+                <button onClick={() => {
+                    setQuantity(quantity + 1);
+                    setTotal( total + item.price)
+                }}>+</button>
+                <span>{quantity}</span>
+                <button>-</button>
                 <button onClick={() => removeItem(item.id, item.price)}>Remove</button>
             </div> ))
       }

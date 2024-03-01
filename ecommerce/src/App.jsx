@@ -10,6 +10,7 @@ function App() {
 const [input, setInput] = useState();
 const [cartArr, setCartArr] = useState([]);
 const [total, setTotal] = useState(0);
+const [quantity, setQuantity] = useState(1);
 
 console.log(cartArr)
   return (
@@ -18,8 +19,8 @@ console.log(cartArr)
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/products' element={<Products input={input} setInput={setInput} cartArr={cartArr} total={total} setTotal={setTotal}></Products>}></Route>
-        <Route path='cart' element={<Cart cartArr={cartArr} setCartArr={setCartArr} total={total} setTotal={setTotal}></Cart>}></Route >
-        <Route path='/details/:id' element={<Details cartArr={cartArr} setCartArr={setCartArr}total={total} setTotal={setTotal}></Details>}></Route>
+        <Route path='cart' element={<Cart cartArr={cartArr} setCartArr={setCartArr} total={total} setTotal={setTotal} quantity={quantity} setQuantity={setQuantity}></Cart>}></Route >
+        <Route path='/details/:id' element={<Details cartArr={cartArr} setCartArr={setCartArr}total={total} setTotal={setTotal} quantity={quantity} setQuantity={setQuantity}></Details>}></Route>
       </Routes>
     </>
   )
